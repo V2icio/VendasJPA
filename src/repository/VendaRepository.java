@@ -1,5 +1,6 @@
 package repository;
 
+import Others.Connection;
 import models.Venda;
 
 import javax.persistence.*;
@@ -9,9 +10,9 @@ public class VendaRepository {
     EntityManagerFactory emf;
     EntityManager em;
 
-    public VendaRepository(EntityManagerFactory emf, EntityManager em) {
-        this.emf = emf;
-        this.em = em;
+    public VendaRepository(Connection conexao) {
+        this.emf = conexao.getEmf();
+        this.em = conexao.getEm();
     }
 
     //Create

@@ -1,16 +1,12 @@
 package Others;
 
-import models.Cliente;
-import models.Venda;
-import models.Vendedor;
+import models.*;
 import repository.ClienteRepository;
+import repository.VendaRepository;
 import repository.VendedorRepository;
 
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.TimeZone;
+import java.util.*;
 
 
 public class Main {
@@ -18,8 +14,6 @@ public class Main {
     public static void main(String[] args) {
         Connection conexao = new Connection();
         conexao.create();
-
-
 
         Date date = new Date();
         Cliente cliente = new Cliente("João", "Rua das pedras 43", "Pedregulho", "123456789",
@@ -41,9 +35,30 @@ public class Main {
         VendedorRepository vendedorRepository = new VendedorRepository(conexao);
         vendedorRepository.insereVendedor(vendedor);
 
+        long id = 16;
+
+        vendedor = new Vendedor(null, null ,null, null, null, null, null, null);
+        vendedor.setId(id);
+
+
+
+        List<ItemVenda> lista = new LinkedList<>();
+
+        Produto produto = new Produto("Bola de futebol", "caixa", 2,"UND", 35);
+        ItemVenda itemVenda = new ItemVenda(produto, 2);
+        lista.add(itemVenda);
+        produto = new Produto("vassora","nao tem", 12,"UND", 12);
+
+        itemVenda = new ItemVenda(produto, 4);
+
+        lista.add(itemVenda);
+
+
+
         date = new Date();
-        Venda venda = new Venda(date, 200, "finalizada", vendedor, cliente);
+        Venda venda = new Venda(date, 200, "finalizada", vendedor, cliente, lista);
+        VendaRepository vendaRepository = new VendaRepository(conexao);
 
-
+        vendaRepository.insereVenda(venda);
     }
 }

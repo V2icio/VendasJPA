@@ -16,6 +16,7 @@ public class Vendedor {
     private Date dataContratacao;
 
     @Id@GeneratedValue@PrimaryKey
+    private
     long id;
 
     private static final long serialVersionUID = 1L;
@@ -98,5 +99,9 @@ public class Vendedor {
 
     public void setDataContratacao(Date dataContratacao) {
         this.dataContratacao = dataContratacao;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }
