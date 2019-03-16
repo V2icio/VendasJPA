@@ -4,12 +4,13 @@ import javax.jdo.annotations.PrimaryKey;
 import javax.persistence.*;
 
 @Entity
+@SequenceGenerator(name = "seqProduto", initialValue = 1, allocationSize = 1)
 public class Produto {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqProduto")
     @PrimaryKey
     private
-    long id;
+    long produtoId;
 
     private String descricao;
     private String embalagem;
@@ -26,13 +27,14 @@ public class Produto {
         this.precoVenda = precoVenda;
     }
 
-    public long getId() {
-        return id;
+    private static final long serialVersionUID = 1L;
+
+    public Long getId()
+    {
+        return serialVersionUID;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+
 
     public String getDescricao() {
         return descricao;

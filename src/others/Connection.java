@@ -1,4 +1,4 @@
-package Others;
+package others;
 
 import javax.persistence.*;
 

@@ -16,8 +16,9 @@ public class Cliente {
     private String telefone;
 
 
-    @Id@GeneratedValue@PrimaryKey
-    long id;
+    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @PrimaryKey
+    long clienteId;
 
     private static final long serialVersionUID = 1L;
 

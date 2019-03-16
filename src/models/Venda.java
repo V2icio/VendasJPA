@@ -8,6 +8,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Entity
+@SequenceGenerator(name = "seqVenda", initialValue = 1, allocationSize = 50)
 public class Venda {
     private Date dataVenda;
     private double valorTotal;
@@ -20,11 +21,10 @@ public class Venda {
     @OneToMany
     private List<ItemVenda> listaProdutos;
 
-
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seqVenda")
     @PrimaryKey
-    long id;
+    long vendaId;
 
     public Venda(Date dataVenda, double valorTotal, String status, Vendedor vendedor, Cliente cliente, List<ItemVenda> listaProdutos) {
         this.dataVenda = dataVenda;
@@ -41,6 +41,8 @@ public class Venda {
     {
         return serialVersionUID;
     }
+
+
 
     public Date getDataVenda() {
         return dataVenda;

@@ -15,9 +15,10 @@ public class Vendedor {
     private String telefone;
     private Date dataContratacao;
 
-    @Id@GeneratedValue@PrimaryKey
+    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @PrimaryKey
     private
-    long id;
+    long vendedorId;
 
     private static final long serialVersionUID = 1L;
 
@@ -101,7 +102,4 @@ public class Vendedor {
         this.dataContratacao = dataContratacao;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 }

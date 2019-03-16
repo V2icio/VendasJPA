@@ -1,9 +1,7 @@
-package Others;
+package others;
 
 import models.*;
-import repository.ClienteRepository;
-import repository.VendaRepository;
-import repository.VendedorRepository;
+import repository.*;
 
 
 import java.util.*;
@@ -35,22 +33,22 @@ public class Main {
         VendedorRepository vendedorRepository = new VendedorRepository(conexao);
         vendedorRepository.insereVendedor(vendedor);
 
-        long id = 16;
-
-        vendedor = new Vendedor(null, null ,null, null, null, null, null, null);
-        vendedor.setId(id);
-
-
 
         List<ItemVenda> lista = new LinkedList<>();
+        ProdutoRepository produtoRepository = new ProdutoRepository(conexao);
+        ItemVendaRepository itemVendaRepository = new ItemVendaRepository(conexao);
 
         Produto produto = new Produto("Bola de futebol", "caixa", 2,"UND", 35);
+        produtoRepository.insereProduto(produto);
         ItemVenda itemVenda = new ItemVenda(produto, 2);
+        itemVendaRepository.insereItemVenda(itemVenda);
         lista.add(itemVenda);
+
+
         produto = new Produto("vassora","nao tem", 12,"UND", 12);
-
+        produtoRepository.insereProduto(produto);
         itemVenda = new ItemVenda(produto, 4);
-
+        itemVendaRepository.insereItemVenda(itemVenda);
         lista.add(itemVenda);
 
 
