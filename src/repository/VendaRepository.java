@@ -69,6 +69,7 @@ public class VendaRepository {
             p.setStatus(venda.getStatus());
             p.setValorTotal(venda.getValorTotal());
             p.setVendedor(venda.getVendedor());
+            p.setListaProdutos(venda.getListaProdutos());
         }
         tx.commit();
     }

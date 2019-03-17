@@ -45,8 +45,32 @@ public class ItemVendaRepository {
 
 
     //Update
-    //????
+    public void atualizaItemVenda(int id, ItemVenda itemVenda)//atualizar itemVenda pelo ID
+    {
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+        TypedQuery<ItemVenda> query2 = em.createQuery("SELECT p FROM ItemVenda p WHERE p.itemVendaId = :id", ItemVenda.class);
+        query2.setParameter("id", id);
+        for (ItemVenda p : query2.getResultList())
+        {
+            p.setProduto(itemVenda.getProduto());
+            p.setQuantidade(itemVenda.getQuantidade());
+        }
+        tx.commit();
+    }
 
     //Delete
-    //????
+    public void excluirItemVenda(int id)//excluir itemVenda pelo ID
+    {
+        EntityTransaction tx = em.getTransaction();
+        tx.begin();
+
+        TypedQuery<ItemVenda> query2 = em.createQuery("SELECT p FROM ItemVenda p WHERE p.itemVendaId = :id", ItemVenda.class);
+        query2.setParameter("id", id);
+        for (ItemVenda p : query2.getResultList())
+        {
+            em.remove(p);
+        }
+        tx.commit();
+    }
 }

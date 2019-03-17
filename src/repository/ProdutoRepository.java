@@ -93,7 +93,7 @@ public class ProdutoRepository {
     {
         EntityTransaction tx = em.getTransaction();
         tx.begin();
-        TypedQuery<Produto> query2 = em.createQuery("SELECT p FROM Cliente p", Produto.class);
+        TypedQuery<Produto> query2 = em.createQuery("SELECT p FROM Produto p", Produto.class);
         for (Produto p : query2.getResultList())
         {
             em.remove(p);

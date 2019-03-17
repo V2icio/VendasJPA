@@ -83,4 +83,12 @@ public class Venda {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
+
+    public List<ItemVenda> getListaProdutos() {
+        return listaProdutos;
+    }
+
+    public void setListaProdutos(List<ItemVenda> listaProdutos) {
+        this.listaProdutos = listaProdutos;
+    }
 }
